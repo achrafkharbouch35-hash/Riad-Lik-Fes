@@ -295,15 +295,6 @@ section{ padding:110px 0; }
   position:relative;
   overflow:hidden;
 }
-.chambre-visuel::after{
-  content:"[Photo à ajouter]";
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  color:rgba(243,234,210,0.5);
-  font-family:var(--f-label);
-  font-size:0.7rem;
-  letter-spacing:0.08em;
-}
 .chambre-corps{ padding:0 28px; }
 .chambre-nom{ font-family:var(--f-display); font-size:1.35rem; color:var(--bleu-fes); margin-bottom:8px; }
 .chambre-desc{ font-size:0.92rem; color:rgba(34,26,18,0.68); margin-bottom:16px; }
