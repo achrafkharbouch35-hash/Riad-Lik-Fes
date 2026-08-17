@@ -1,0 +1,482 @@
+/* =========================================================
+   RIAD LIK FES — feuille de style
+   Palette inspirée du zellige de Fès : bleu profond, vert
+   émeraude, laiton, plâtre chaud. Signature graphique :
+   l'étoile à 8 branches (khatam) utilisée comme séparateur.
+   ========================================================= */
+
+:root{
+  /* Couleurs */
+  --plâtre:      #e8dcb8;   /* fond chaud, plus saturé qu'un simple crème */
+  --plâtre-clair:#f3ead2;
+  --encre:       #221a12;   /* texte principal, noir chaud */
+  --bleu-fes:    #163a52;   /* bleu zellige profond */
+  --bleu-fes-lum:#2f6d94;
+  --vert-zellige:#26594c;   /* vert émeraude zellige */
+  --laiton:      #b3862c;   /* accent laiton/doré */
+  --laiton-clair:#d7ac54;
+  --brique:      #8c3f28;   /* rouge brique, utilisé avec parcimonie */
+  --ligne:       rgba(34,26,18,0.14);
+
+  /* Typographie */
+  --f-display: "Fraunces", "Iowan Old Style", serif;
+  --f-corps:   "Work Sans", -apple-system, sans-serif;
+  --f-label:   "Jost", sans-serif;
+
+  --radius: 2px;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+}
+
+body{
+  font-family:var(--f-corps);
+  color:var(--encre);
+  background:var(--plâtre-clair);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+a{ color:inherit; text-decoration:none; }
+img{ max-width:100%; display:block; }
+button{ font-family:inherit; cursor:pointer; border:none; background:none; }
+ul{ list-style:none; }
+
+.conteneur{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 28px;
+}
+
+.eyebrow{
+  font-family:var(--f-label);
+  text-transform:uppercase;
+  letter-spacing:0.22em;
+  font-size:0.72rem;
+  color:var(--laiton);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+
+.titre-section{
+  font-family:var(--f-display);
+  font-weight:600;
+  font-size:clamp(2rem, 4vw, 3rem);
+  line-height:1.08;
+  margin:14px 0 20px;
+  color:var(--bleu-fes);
+}
+
+.titre-section em{ font-style:italic; color:var(--brique); }
+
+.intro-section{
+  max-width:560px;
+  color:rgba(34,26,18,0.75);
+  font-size:1.02rem;
+}
+
+/* Étoile khatam — signature graphique réutilisable */
+.khatam{
+  width:22px; height:22px;
+  flex-shrink:0;
+}
+.khatam path{ fill:currentColor; }
+
+.diviseur{
+  display:flex; align-items:center; gap:16px;
+  color:var(--laiton);
+  margin:8px 0 0;
+}
+.diviseur::before, .diviseur::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--ligne);
+}
+
+/* ===================== NAVIGATION ===================== */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:22px 0;
+  transition:all .4s ease;
+}
+.nav .conteneur{ display:flex; align-items:center; justify-content:space-between; }
+.nav-marque{
+  font-family:var(--f-display);
+  font-size:1.25rem;
+  letter-spacing:0.02em;
+  color:var(--plâtre);
+  display:flex; align-items:center; gap:10px;
+}
+.nav-marque .khatam{ color:var(--laiton-clair); }
+.nav-liens{ display:flex; gap:34px; }
+.nav-liens a{
+  font-family:var(--f-label);
+  font-size:0.82rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--plâtre-clair);
+  opacity:0.88;
+  position:relative;
+  padding-bottom:4px;
+}
+.nav-liens a::after{
+  content:""; position:absolute; left:0; bottom:0; width:0; height:1px;
+  background:var(--laiton-clair); transition:width .3s ease;
+}
+.nav-liens a:hover::after{ width:100%; }
+.nav-cta{
+  font-family:var(--f-label);
+  font-size:0.78rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--encre);
+  background:var(--laiton-clair);
+  padding:10px 20px;
+  border-radius:var(--radius);
+}
+.nav-burger{ display:none; }
+
+.nav.scrolled{
+  padding:12px 0;
+  background:rgba(22,17,11,0.92);
+  backdrop-filter:blur(8px);
+  box-shadow:0 6px 24px rgba(0,0,0,0.25);
+}
+
+/* ===================== HERO ===================== */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:flex-end;
+  background:
+    linear-gradient(180deg, rgba(22,17,11,0.35) 0%, rgba(22,17,11,0.55) 55%, rgba(22,17,11,0.88) 100%),
+    linear-gradient(120deg, var(--bleu-fes) 0%, #0f2836 55%, var(--vert-zellige) 100%);
+  overflow:hidden;
+  padding-bottom:110px;
+}
+.hero-motif{
+  position:absolute; inset:0;
+  opacity:0.16;
+  background-size:140px 140px;
+  animation:derive 90s linear infinite;
+}
+@keyframes derive{
+  from{ background-position:0 0; }
+  to{ background-position:560px 0; }
+}
+.hero-image-slot{
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  opacity:0.55;
+  /* Remplacer par : background-image:url('images/hero.jpg'); */
+}
+.hero-contenu{
+  position:relative; z-index:2;
+  width:100%;
+}
+.hero .eyebrow{ color:var(--laiton-clair); }
+.hero-titre{
+  font-family:var(--f-display);
+  font-weight:600;
+  font-style:italic;
+  color:var(--plâtre-clair);
+  font-size:clamp(3rem, 9vw, 6.4rem);
+  line-height:0.96;
+  margin:18px 0 20px;
+  letter-spacing:-0.01em;
+}
+.hero-slogan{
+  color:rgba(243,234,210,0.82);
+  font-size:1.08rem;
+  max-width:480px;
+  margin-bottom:34px;
+}
+.hero-actions{ display:flex; gap:16px; flex-wrap:wrap; }
+
+.btn{
+  font-family:var(--f-label);
+  font-size:0.82rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:15px 30px;
+  border-radius:var(--radius);
+  display:inline-flex; align-items:center; gap:10px;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.btn-primaire{
+  background:var(--laiton-clair);
+  color:var(--encre);
+}
+.btn-primaire:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(179,134,44,0.35); }
+.btn-fantome{
+  border:1px solid rgba(243,234,210,0.55);
+  color:var(--plâtre-clair);
+}
+.btn-fantome:hover{ background:rgba(243,234,210,0.1); transform:translateY(-2px); }
+
+.hero-scroll{
+  position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+  z-index:2;
+  color:rgba(243,234,210,0.6);
+  font-family:var(--f-label);
+  font-size:0.7rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+}
+.hero-scroll .ligne{ width:1px; height:34px; background:currentColor; animation:pulse-ligne 2s ease-in-out infinite; }
+@keyframes pulse-ligne{ 0%,100%{opacity:0.3;} 50%{opacity:1;} }
+
+/* ===================== SECTIONS GÉNÉRALES ===================== */
+section{ padding:110px 0; }
+.fond-plâtre{ background:var(--plâtre); }
+.fond-encre{ background:var(--encre); color:var(--plâtre-clair); }
+.fond-encre .titre-section{ color:var(--plâtre-clair); }
+.fond-encre .intro-section{ color:rgba(243,234,210,0.7); }
+
+/* ---- À propos ---- */
+.apropos-grille{
+  display:grid;
+  grid-template-columns:0.9fr 1.1fr;
+  gap:64px;
+  align-items:center;
+  margin-top:48px;
+}
+.apropos-cadre{
+  position:relative;
+  aspect-ratio:4/5;
+  border:1px solid var(--laiton);
+  padding:18px;
+}
+.apropos-image{
+  width:100%; height:100%;
+  background:linear-gradient(160deg,var(--bleu-fes),var(--vert-zellige));
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(243,234,210,0.55);
+  font-family:var(--f-label);
+  font-size:0.78rem;
+  letter-spacing:0.1em;
+  text-align:center;
+  padding:20px;
+  /* Remplacer par : background-image:url('images/riad-cour.jpg'); background-size:cover; */
+}
+.apropos-texte p{ margin-bottom:18px; color:rgba(34,26,18,0.8); }
+.apropos-liste{ margin-top:28px; display:grid; gap:14px; }
+.apropos-liste li{ display:flex; gap:12px; align-items:flex-start; font-size:0.95rem; }
+.apropos-liste .khatam{ color:var(--laiton); margin-top:2px; width:16px; height:16px; }
+
+/* ---- Chambres ---- */
+.chambres-grille{
+  margin-top:52px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  background:var(--ligne);
+}
+.chambre-carte{
+  background:var(--plâtre-clair);
+  padding:0 0 32px;
+}
+.chambre-visuel{
+  aspect-ratio:4/3;
+  background:linear-gradient(145deg, var(--vert-zellige), var(--bleu-fes));
+  margin-bottom:24px;
+  position:relative;
+  overflow:hidden;
+}
+.chambre-visuel::after{
+  content:"[Photo à ajouter]";
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(243,234,210,0.5);
+  font-family:var(--f-label);
+  font-size:0.7rem;
+  letter-spacing:0.08em;
+}
+.chambre-corps{ padding:0 28px; }
+.chambre-nom{ font-family:var(--f-display); font-size:1.35rem; color:var(--bleu-fes); margin-bottom:8px; }
+.chambre-desc{ font-size:0.92rem; color:rgba(34,26,18,0.68); margin-bottom:16px; }
+.chambre-prix{
+  font-family:var(--f-label);
+  letter-spacing:0.06em;
+  color:var(--laiton);
+  border-top:1px solid var(--ligne);
+  padding-top:14px;
+  display:flex; justify-content:space-between;
+  font-size:0.85rem;
+}
+
+/* ---- Services / Amenities ---- */
+.services-grille{
+  margin-top:52px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--ligne);
+}
+.service-item{
+  background:var(--plâtre);
+  padding:40px 26px;
+  text-align:center;
+}
+.service-item .khatam{ color:var(--laiton); margin:0 auto 18px; width:30px; height:30px; }
+.service-item h3{ font-family:var(--f-display); font-size:1.05rem; margin-bottom:8px; color:var(--bleu-fes); }
+.service-item p{ font-size:0.85rem; color:rgba(34,26,18,0.6); }
+
+/* ---- Galerie ---- */
+.galerie-grille{
+  margin-top:52px;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  grid-auto-rows:180px;
+  gap:6px;
+}
+.galerie-item{
+  background:linear-gradient(160deg, var(--bleu-fes-lum), var(--vert-zellige));
+  position:relative;
+  overflow:hidden;
+}
+.galerie-item::after{
+  content:"[Photo]";
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(243,234,210,0.45);
+  font-family:var(--f-label);
+  font-size:0.68rem;
+  letter-spacing:0.1em;
+}
+.galerie-item:nth-child(1){ grid-column:span 2; grid-row:span 2; }
+.galerie-item:nth-child(4){ grid-column:span 2; }
+
+/* ---- Restaurant ---- */
+.restaurant-grille{
+  margin-top:48px;
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:64px;
+  align-items:center;
+}
+.restaurant-image{
+  aspect-ratio:5/4;
+  background:linear-gradient(150deg,var(--vert-zellige),#0f2836);
+  border:1px solid rgba(243,234,210,0.15);
+}
+.restaurant-texte p{ color:rgba(243,234,210,0.72); margin-bottom:16px; }
+
+/* ---- Localisation ---- */
+.localisation-grille{
+  margin-top:48px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+  background:var(--ligne);
+}
+.loc-infos{ background:var(--plâtre-clair); padding:48px; }
+.loc-infos dl{ display:grid; gap:22px; margin-top:24px; }
+.loc-infos dt{ font-family:var(--f-label); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--laiton); }
+.loc-infos dd{ font-size:1rem; margin-top:4px; }
+.loc-carte iframe{ width:100%; height:100%; min-height:420px; border:0; filter:grayscale(0.25) contrast(1.05); }
+
+/* ---- Avis ---- */
+.avis-entete{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+.avis-note{ text-align:right; }
+.avis-note .chiffre{ font-family:var(--f-display); font-size:3.4rem; color:var(--laiton); line-height:1; }
+.avis-note .etoiles{ color:var(--laiton); letter-spacing:2px; margin:6px 0; }
+.avis-grille{
+  margin-top:52px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:36px;
+}
+.avis-carte{
+  background:var(--plâtre-clair);
+  border:1px solid var(--ligne);
+  padding:32px;
+}
+.avis-carte .etoiles{ color:var(--laiton); font-size:0.9rem; margin-bottom:16px; letter-spacing:2px; }
+.avis-carte p{ font-size:0.92rem; color:rgba(34,26,18,0.72); margin-bottom:18px; font-style:italic; }
+.avis-carte .nom{ font-family:var(--f-label); font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--bleu-fes); }
+
+/* ---- Contact ---- */
+.contact-grille{
+  margin-top:48px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:rgba(243,234,210,0.15);
+}
+.contact-item{ padding:42px 30px; }
+.contact-item .khatam{ color:var(--laiton-clair); width:26px; height:26px; margin-bottom:18px; }
+.contact-item h3{ font-family:var(--f-display); font-size:1.15rem; margin-bottom:8px; }
+.contact-item a, .contact-item p{ color:rgba(243,234,210,0.72); font-size:0.95rem; }
+.contact-item a:hover{ color:var(--laiton-clair); }
+
+/* ===================== FOOTER ===================== */
+footer{
+  background:#150f09;
+  color:rgba(243,234,210,0.55);
+  padding:48px 0 28px;
+  font-size:0.82rem;
+}
+.footer-haut{
+  display:flex; justify-content:space-between; align-items:center;
+  padding-bottom:28px; margin-bottom:28px;
+  border-bottom:1px solid rgba(243,234,210,0.1);
+  flex-wrap:wrap; gap:20px;
+}
+.footer-marque{ font-family:var(--f-display); font-size:1.2rem; color:var(--plâtre-clair); display:flex; align-items:center; gap:10px; }
+.footer-social{ display:flex; gap:20px; }
+.footer-bas{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+
+/* ===================== BOUTON WHATSAPP FLOTTANT ===================== */
+.whatsapp-flottant{
+  position:fixed; bottom:26px; right:26px; z-index:90;
+  width:58px; height:58px; border-radius:50%;
+  background:#25D366;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 8px 22px rgba(0,0,0,0.3);
+  transition:transform .25s ease;
+}
+.whatsapp-flottant:hover{ transform:scale(1.08); }
+.whatsapp-flottant svg{ width:28px; height:28px; fill:#fff; }
+
+/* ===================== ANIMATIONS AU SCROLL ===================== */
+.reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
+.reveal.visible{ opacity:1; transform:translateY(0); }
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width:980px){
+  .apropos-grille, .restaurant-grille, .localisation-grille{ grid-template-columns:1fr; }
+  .chambres-grille{ grid-template-columns:1fr; }
+  .services-grille{ grid-template-columns:repeat(2,1fr); }
+  .avis-grille{ grid-template-columns:1fr; }
+  .contact-grille{ grid-template-columns:1fr; }
+  .galerie-grille{ grid-template-columns:repeat(2,1fr); }
+  .galerie-item:nth-child(1){ grid-column:span 2; grid-row:span 1; }
+}
+@media (max-width:760px){
+  .nav-liens{
+    position:fixed; inset:0 0 0 30%;
+    background:rgba(15,11,7,0.98);
+    flex-direction:column; justify-content:center; align-items:flex-start;
+    padding:40px; gap:26px;
+    transform:translateX(100%);
+    transition:transform .4s ease;
+  }
+  .nav-liens.ouvert{ transform:translateX(0); }
+  .nav-burger{
+    display:flex; flex-direction:column; gap:5px; z-index:101;
+  }
+  .nav-burger span{ width:24px; height:1.5px; background:var(--plâtre); }
+  .nav-cta{ display:none; }
+  section{ padding:76px 0; }
+  .hero{ padding-bottom:80px; }
+}
