@@ -9,7 +9,7 @@ const CONFIG = {
   // Remplacez-le si le numéro WhatsApp diffère du téléphone principal.
   whatsapp: "212654174505",
   whatsappMessage: "Bonjour, je souhaite réserver au Riad Lik Fes.",
-  instagramUrl: "" // ex. "https://instagram.com/riadlikfes"
+  instagramUrl: "https://www.instagram.com/riad.lik/"
 };
 
 document.addEventListener("DOMContentLoaded", () => {
