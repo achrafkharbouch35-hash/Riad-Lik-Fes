@@ -23,7 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.whatsappMessage)}`;
     const flottant = document.getElementById("whatsapp-flottant");
     const lienContact = document.getElementById("lien-whatsapp");
-    if (flottant) flottant.href = url;
+    if (flottant) {
+  flottant.href = url;
+  flottant.target = "_blank";
+  flottant.rel = "noopener";
+}
     if (lienContact) {
       lienContact.href = url;
       lienContact.textContent = "+" + CONFIG.whatsapp.replace(/(\d{3})(\d{3})(\d{6})/, "$1 $2 $3");
