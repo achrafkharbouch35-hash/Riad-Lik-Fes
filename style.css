@@ -257,16 +257,19 @@ section{ padding:110px 0; }
   padding:18px;
 }
 .apropos-image{
-  width:100%; height:100%;
+  width:100%;
+  height:100%;
+  min-height:420px;
+  overflow:hidden;
   background:linear-gradient(160deg,var(--bleu-fes),var(--vert-zellige));
-  display:flex; align-items:center; justify-content:center;
-  color:rgba(243,234,210,0.55);
-  font-family:var(--f-label);
-  font-size:0.78rem;
-  letter-spacing:0.1em;
-  text-align:center;
-  padding:20px;
-  /* Remplacer par : background-image:url('images/riad-cour.jpg'); background-size:cover; */
+}
+
+.apropos-image img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
 }
 .apropos-texte p{ margin-bottom:18px; color:rgba(34,26,18,0.8); }
 .apropos-liste{ margin-top:28px; display:grid; gap:14px; }
