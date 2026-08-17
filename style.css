@@ -338,18 +338,6 @@ section{ padding:110px 0; }
   position:relative;
   overflow:hidden;
 }
-.galerie-item::after{
-  content:"[Photo]";
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  color:rgba(243,234,210,0.45);
-  font-family:var(--f-label);
-  font-size:0.68rem;
-  letter-spacing:0.1em;
-}
-.galerie-item:nth-child(1){ grid-column:span 2; grid-row:span 2; }
-.galerie-item:nth-child(4){ grid-column:span 2; }
-
 /* ---- Restaurant ---- */
 .restaurant-grille{
   margin-top:48px;
